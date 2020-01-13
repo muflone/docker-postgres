@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+   postgres:
+     container_name: postgres
+     image: postgres:latest
+     networks:
+       containers:
+         ipv4_address: 192.168.1.235
+     hostname: postgres
+     domainname: postgres.muflone.lan
+     restart: 'no'
+     volumes:
+       - ./data:/var/lib/postgresql/data
+     env_file:
+       - ./database.env
+
+networks:
+  containers:
+    external: true
+
